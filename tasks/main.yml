@@ -17,8 +17,22 @@
 - name: Configure Nginx virtual host
   template:
     src: vhost.conf.j2
-    dest: /etc/nginx/conf.d/{{ vhost_name }}.conf
+    dest: /etc/nginx/sites-available/{{ vhost_name }}.conf
     owner: root
     group: root
+
+- name: Enable Nginx virtual host
+  file:
+    src: /etc/nginx/sites-available/{{ vhost_name }}.conf
+    dest: /etc/nginx/sites-enabled/{{ vhost_name }}.conf
+    state: link
   notify:
     - Reload Nginx
+
+- name: Creates vhost directory
+  file:
+    path: "{{ vhost_root }}"
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: 0775
