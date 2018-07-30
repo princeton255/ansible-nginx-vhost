@@ -6,7 +6,7 @@
 
 vhost_alt_names: ""
 vhost_fastcgi_params: {}
-vhost_fastcgi_pass: unix:/var/run/php-fpm.sock
+vhost_fastcgi_pass: unix:/var/run/php/php7.2-fpm.sock
 
 vhost_redirect_http: no
 vhost_process_http: yes

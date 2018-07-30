@@ -36,3 +36,11 @@
     owner: www-data
     group: www-data
     mode: 0775
+
+- name: Creates letsencrypt home directory
+  file:
+    path: /var/www/letsencrypt
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: 0775
